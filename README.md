@@ -1,13 +1,13 @@
 # Rust RabbitMQ Consumer
 
-Este projeto é um consumer de mensagens do RabbitMQ escrito em Rust. As mensagens recebidas são armazenadas em um banco de dados MongoDB. O serviço é executado como um processo independente e espera que o RabbitMQ já esteja rodando.
+Este projeto é um consumer de mensagens do RabbitMQ escrito em Rust. As mensagens recebidas são armazenadas em um banco de dados MongoDB.
 
 ## Requisitos
 
 - Rust (recomendado: versão mais recente estável)
 - Cargo (gerenciador de pacotes do Rust)
 - Docker e Docker Compose
-- RabbitMQ rodando previamente
+- RabbitMQ 
 
 ## Configuração
 
@@ -27,8 +27,7 @@ cp .env.example .env
    docker-compose up -d
    ```
 
-2. Certifique-se de que o RabbitMQ já está rodando.
-3. Compile e execute a aplicação Rust:
+2. Compile e execute a aplicação Rust:
 
    ```sh
    cargo run --release
@@ -36,11 +35,6 @@ cp .env.example .env
 
 ## Considerações
 
-- A aplicação **não inicia o RabbitMQ**, ele deve estar rodando previamente.
-- O MongoDB é iniciado via Docker Compose.
+- O MongoDB e o RabbitMQ é iniciado via Docker Compose.
 - Utilize o `.env` para definir as credenciais e conexões necessárias.
-
-## Licença
-
-Este projeto é distribuído sob a licença MIT.
 
