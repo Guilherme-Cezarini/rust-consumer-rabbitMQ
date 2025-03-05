@@ -1,4 +1,15 @@
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  # Porta para conexão AMQP
+      - "15672:15672"  # Porta para a interface de gerenciamento
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
   mongo:
     image: mongo:latest
     container_name: mongodb
@@ -10,6 +21,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_PASSWORD}
     volumes:
       - mongodb_data:/data/db
-
 volumes:
+  rabbitmq_data:
   mongodb_data:
